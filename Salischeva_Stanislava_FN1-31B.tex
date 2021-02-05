@@ -1,0 +1,345 @@
+\documentclass[12pt]{article} 
+\usepackage[utf8]{inputenc} 
+\usepackage[russian]{babel} 
+\usepackage{amsmath,amssymb} 
+\usepackage{graphics} 
+\usepackage{graphicx} 
+\graphicspath{{pictures/}} 
+\DeclareGraphicsExtensions{.pdf,.png,.jpg} 
+\usepackage{pbox} 
+\usepackage[x11names]{xcolor} 
+\definecolor{brightmaroon}{rgb}{0.76, 0.13, 0.28} 
+\definecolor{royalazure}{rgb}{0.0, 0.22, 0.66} 
+\usepackage[colorlinks=true,linkcolor=royalazure]{hyperref} 
+\usepackage{tikz, tkz-fct, pgfplots} 
+\usetikzlibrary{arrows} 
+\usepackage{geometry} 
+\geometry{ 
+a4paper, 
+total={170mm,257mm}, 
+left=20mm, 
+top=20mm 
+} 
+\usepackage[labelsep=period]{caption} 
+
+
+% —-------------— Commands —-------------— 
+\newcommand{\eps}{\varepsilon} 
+\newcommand\tline[2]{$\underset{\text{#1}}{\text{\underline{\hspace{#2}}}}$} 
+
+% —-------------— Set graphics path —-------------— 
+\graphicspath{{img/}} 
+
+\begin{document} 
+\pagestyle{empty} 
+\centerline{\large Министерство науки и высшего образования} 
+\centerline{\large Федеральное государственное бюджетное образовательное} 
+\centerline{\large учреждение высшего образования} 
+\centerline{\large ``Московский государственный технический университет} 
+\centerline{\large имени Н.Э. Баумана} 
+\centerline{\large (национальный исследовательский университет)''} 
+\centerline{\large (МГТУ им. Н.Э. Баумана)} 
+\hrule 
+\vspace{0.5cm} 
+\begin{figure}[h] 
+\center{\includegraphics[scale=0.35]{bmstu-logo-small.png}} 
+\end{figure} 
+\begin{center} 
+\large 
+\begin{tabular}{c} 
+Факультет ``Фундаментальные науки'' \\ 
+Кафедра ``Высшая математика'' 
+\end{tabular} 
+\end{center} 
+\vspace{0.5cm} 
+\begin{center} 
+\LARGE \bf 
+\begin{tabular}{c} 
+\textsc{Отчёт} \\ 
+по учебной практике \\ 
+за 3 семестр 2020---2021 гг. 
+\end{tabular} 
+\end{center} 
+\vspace{0.5cm} 
+\begin{center} 
+\large 
+\begin{tabular}{p{5.3cm}ll} 
+\pbox{5.45cm}{ 
+Руководитель практики,\\ 
+ст. преп. кафедры ФН1} & \tline{\it(подпись)}{5cm} & Кравченко О.В. \\[0.5cm] 
+студент группы ФН1--31 & \tline{\it(подпись)}{5cm} & Салищева С.М. 
+\end{tabular} 
+\end{center} 
+\vfill 
+\begin{center} 
+\large 
+\begin{tabular}{c} 
+Москва, \\ 
+2020 г. 
+\end{tabular} 
+\end{center} 
+\newpage 
+\tableofcontents 
+
+\newpage 
+\section{Цели и задачи практики} 
+\subsection{Цели} 
+—- развитие компетенций, способствующих успешному освоению материала бакалавриата и необходимых в будущей профессиональной деятельности. 
+
+\subsection{Задачи} 
+\begin{enumerate} 
+\item Знакомство с теорией рядов Фурье, и теорией интегральный уравнений. 
+\item Развитие умения поиска необходимой информации в специальной литературе и других источниках. 
+\item Развитие навыков составления отчётов и презентации результатов. 
+\end{enumerate} 
+
+\subsection{Индивидуальное задание} 
+\begin{enumerate} 
+\item Изучить способы отображения математической информации в системе вёртски \LaTeX. 
+\item Изучить возможности системы контроля версий \textsf{Git}. 
+\item Научиться верстать математические тексты, содержащие формулы и графики в системе \LaTeX. 
+Для этого, выполнить установку свободно распространяемого дистрибутива \textsf{TeXLive} и оболочки \textsf{TeXStudio}. 
+\item Оформить в системе \LaTeX типовые расчёты по курсу математического анализа согласно своему варианту. 
+\item Создать аккаунт на онлайн ресурсе \textsf{GitHub} и загрузить исходные \textsf{tex}--файлы 
+и результат компиляции в формате \textsf{pdf}. 
+\item Решить индивидуальное домашнее задание согласно своему варианту, и оформить решение с учётов пп. 1---4. 
+\end{enumerate} 
+
+\newpage 
+\section{Отчёт} 
+Интегральные уравнения имеют большое прикладное значение, являясь мощным 
+орудием исследования многих задач естествознания и техники: они широко используются 
+в механике, астрономии, физике, во многих задачах химии и биологии. Теория линейных 
+интегральных уравнений представляет собой важный раздел современной математики, 
+имеющий широкие приложения в теории дифференциальных уравнений, математической 
+физике, в
+ 
+задачах естествознания и техники. Отсюда владение методами теории 
+дифференциальных и интегральных уравнений необходимо прикладному математику, при решении задач 
+механики и физики. 
+
+\newpage 
+\section{Индивидуальное задание} 
+
+
+%================================================================================================================================= 
+\subsection{Ряды Фурье и интегральное уравнение Вольтерры.} 
+% 
+
+%================================================================================================================================= 
+
+% —------------------------— Problem 1--------------------------------— 
+\subsubsection*{\center Задача № 1.} 
+{\bf Условие.~} 
+Разложить в ряд Фурье заданную функцию $f(x)$, построить графики $f(x)$ и суммы ее ряда Фурье. Если не указывается, какой вид разложения в ряд необходимо представить, то требуется разложить функцию либо в общий тригонометрический ряд Фурье, либо следует выбрать оптимальный вид разложения в зависимости от данной функции. 
+
+
+\begin{equation} 
+f(x) = \sin{x}, \left[\frac{-\pi}{2};\frac{\pi}{2}\right]
+\end{equation} 
+
+{\bf Решение.~} 
+\noindent 
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[xmin=-4,	xmax=4, 	ymin=-2,	ymax=2,
+	width=0.5\textwidth,
+	height=0.4\textwidth,
+	axis x line=middle,
+	axis y line=middle, 
+	every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+	every inner x axis line/.append style={|-latex'},
+	every inner y axis line/.append style={|-latex'},
+	minor tick num=1,			
+	axis equal=true,
+	xlabel=$x$, 
+	ylabel=$y$,          
+	samples=100,
+	clip=true,
+	]
+	\addplot[color=black, line width=1.5pt,domain=-4:4] {sin(deg(\x))};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+\noindent 
+Разложим в общий тригонометтрический ряд вида
+$$ 
+f(x)=\frac{a_0}{2}+\sum_{n=1}^\infty 
+\left(a_n\cos{{(\frac{nx\pi}{l})}+b_n\sin{(\frac{nx\pi}{l})}\right). 
+$$ 
+\noindent 
+В данном случае 
+$$ 
+l = \frac{\pi}{2}
+$$ 
+\noindent 
+Вычислим коэффициенты
+$$ 
+\begin{array}{rcl}
+a_0 &=& \displaystyle\frac{2}{\pi}\int\limits_\frac{-\pi}{2}^\frac{\pi}{2}\sin{x} \,dx = 0 \ \\[12pt]
+a_n &=& 0,\quad\text{так как функция нечетная}\ \\[12pt] 
+b_n &=& \displaystyle\frac{2}{\pi}\int\limits_\frac{-\pi}{2}^\frac{\pi}{2}\sin{x} \sin{2nx} \,dx = \frac{2}{\pi} \left(\frac{sin{(2nx-x)}}{4n-2} - \frac{sin{(x+2nx)}}{2+4n}\right)\bigg|_\frac{-\pi}{2}^\frac{\pi}{2} = -\frac{2}{\pi}\frac{4n(-1)^n}{4n^2-1} 
+\end{array} 
+$$ 
+\noindent 
+Применив теорему Дирихле о поточечной сходимости ряда Фурье, видим, что построен- ный ряд Фурье сходится к периодическому (с периодом T = π) продолжению исходной функции при n = 0, ±1, ±2, . . .. График функции $S(x)$ имеет следующий вид, где $S(x)$ — сумма ряда Фурье 
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[xmin=-6, xmax=6, ymin=-1, ymax=0.5,
+	width=0.8\textwidth,
+	height=0.4\textwidth,
+	axis x line=middle,
+	axis y line=middle, 
+	every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+	every inner x axis line/.append style={|-latex'},
+	every inner y axis line/.append style={|-latex'},
+	minor tick num=1,			
+	axis equal=true,
+	xlabel=$x$, 
+	ylabel=$S(x)$,          
+	samples=100,
+	clip=true,
+	]
+	\addplot[color=black, line width=1.5pt,domain=-1.57:1.57] {sin(deg(\x))};
+	\addplot[color=black, line width=1.5pt,domain=-4.71:-1.57] {-sin(deg(\x))};
+	\addplot[color=black, line width=1.5pt,domain=-7.85:-4.71] {sin(deg(\x))};
+	\addplot[color=black, line width=1.5pt,domain=1.57:4.71] {-sin(deg(\x))};
+	\addplot[color=black, line width=1.5pt,domain=4.71:7.85] {sin(deg(\x))};
+	\addplot[
+	mark=*,
+	mark options={fill=black, draw=black},
+	only marks,
+	] coordinates {(-4.71, 0) (-1.57, 0) (1.57, 0) (4.71, 0)};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+\noindent
+\noindent 
+\textbf{Ответ:} 
+\[ 
+\begin{split} 
+&f(x)= -\frac{8}{\pi}\sum_{n=1}^\infty\left[\frac{n(-1)^nsin2nx}{4n^2-1}\right]
+\end{split} 
+\] 
+
+
+
+
+% —------------------------— Problem 2--------------------------------— 
+\subsubsection*{\center Задача № 2.} 
+{\bf Условие.~} 
+Для заданной графически функции $y(x)$ построить ряд Фурье в комплексной форме, изобразить график суммы построенного ряда 
+\begin{center}
+	\begin{tikzpicture}[
+		declare function={
+			func(\x)=
+			and(\x >= 0, \x <= 1.5708) * 0.63662 * (1.5708 - \x) + 
+			and(\x >  1.5708, \x <= 3.1416) * 0.63662 * (\x - 1.5708);
+		}
+		]
+		\begin{axis}[
+		axis x line=middle, axis y line=middle,
+		axis equal,	
+		ymin=-1.1, ymax=1.1, ytick={-1,...,2}, ylabel=$y$,
+		xmin=-1.1, xmax=5, xtick={-1,1,1.5708,2,3.14159},
+		xticklabels={-1,1,$\dfrac{\pi}{2}$,2,$\pi$},
+		xlabel=$x$,
+		domain=0.0:pi-0.01,samples=600 % added		
+		]
+		
+		\addplot [domain=0:1.5708, black,line width=2pt] {0.63662 * (1.5708 - \x)};
+		\addplot [domain=1.5708:pi,black,line width=2pt] {0.63662 * (\x - 1.5708)};
+		\addplot [dashed, black] coordinates {(pi,0)(pi,1)};				
+		\end{axis}
+		\end{tikzpicture}			
+\end{center}
+\noindent 
+\textbf{Решение.}\\ 
+
+\noindent 
+Ряд Фурье в комплексной форме имеет следующий вид 
+\[ 
+f(x) = \sum_{n=-\infty}^\infty c_n e^{i\omega nx},\quad c_n=\frac{1}{T}\int\limits_a^b f(x) e^{-i\omega nx}dx,\,\omega=\frac{2\pi}{T}. 
+\] 
+В нашем примере $ a=0,b=\pi,T=\pi,\omega=2$, 
+найдем коэффицинеты $c_n,\,n=0,\pm1,\pm2,\ldots$. 
+$$ 
+\begin{array}{rcl} 
+c_n &=&\displaystyle\frac{1}{\pi}\left( 
+\int\limits_0^\pi f(x) e^{-2i nx}dx \right) = \displaystyle\frac{1}{\pi}\left(\int\limits_0^\frac{\pi}{2}\left(-\frac{2x}{\pi+1}\right) e^{-2i nx}dx \right) + \displaystyle\frac{1}{\pi}\left(\int\limits_\frac{\pi}{2}^\pi \left(\frac{2x}{\pi}-1\right) e^{-2i nx}dx\right) = \\[12pt] 
+&=&\displaystyle\frac{1}{\pi} \left(-\frac{i(2nx-n\pi-i)e^{-2inx}}{2n^{2}\pi}\bigg|_0^\frac{\pi}{2}+\frac{i(2nx-n\pi-i)e^{-2inx}}{2n^{2}\pi}\bigg|_\frac{\pi}{2}^\pi\right) = \\[12pt]
+&=&\displaystyle\frac{(n\pi-i)sin{(2n\pi)}+(in\pi+1)cos{(2n\pi)}+2isin{(n\pi)}-2cos{(n\pi)}-in\pi+1}{2n^{2}\pi^{2}}
+\end{array} 
+$$ 
+\noindent 
+Применив теорему Дирихле о поточечной сходимости ряда Фурье, видим, что построен- ный ряд Фурье сходится к периодическому (с периодом T = π) продолжению исходной функции при n = 0, ±1, ±2, . . .. График функции S(x) имеет следующий вид, где S(x) — сумма ряда Фурье
+\begin{center} 
+\begin{tikzpicture} 
+\begin{axis}[xmin=-6, xmax=6, ymin=-1, ymax=0.5, 
+width=0.8\textwidth, 
+height=0.4\textwidth, 
+axis x line=middle, 
+axis y line=middle, 
+every axis x label/.style={at={(current axis.right of origin)},anchor=west}, 
+every inner x axis line/.append style={|-latex'}, 
+every inner y axis line/.append style={|-latex'}, 
+minor tick num=1, 
+axis equal=true, 
+xlabel=$x$, 
+ylabel=$S(x)$, 
+samples=100, 
+clip=true, 
+] 
+
+\addplot[color=black, line width=1.5pt,domain=1.57:3.14] {0.63662 * (\x - 1.5708)}; 
+\addplot[color=black, line width=1.5pt,domain=0:1.57]{0.63662 * (1.5708 - \x)}; 
+\addplot[color=black, line width=1.5pt,domain=3.14:4.71] {0.63662 * (1.5708 - \x)+2}; 
+\addplot[color=black, line width=1.5pt,domain=4.71:6.28] {0.63662 * (\x - 1.5708)-2}; 
+\addplot[color=black, line width=1.5pt,domain=-1.57:0] {0.63662 * (\x - 1.5708)+2}; 
+\addplot[color=black, line width=1.5pt,domain=-1.57:-3.14]{0.63662 * (1.5708 - \x)-2}; 
+\addplot[color=black, line width=1.5pt,domain=-4.71:-3.14] {0.63662 * (\x - 1.5708)+4}; 
+\addplot[color=black, line width=1.5pt,domain=-6.28:-4.71]{0.63662 * (1.5708 - \x)-4}; 
+\end{axis} 
+\end{tikzpicture} 
+\end{center} 
+
+\noindent 
+\textbf{Ответ:} 
+\[ 
+\begin{split} 
+&f(x)= \sum_{n=-\infty}^\infty\left[\frac{(n\pi-i)sin{(2n\pi)}+(in\pi+1)cos{(2n\pi)}+2isin{(n\pi)}-2cos{(n\pi)}-in\pi+1}{2n^{2}\pi^{2}}\right] e^{2inx}\\[12pt] 
+\end{split} 
+\] 
+
+
+
+% —------------------------— Problem 3--------------------------------— 
+\subsubsection*{\center Задача № 3.} 
+{\bf Условие.~}\\ 
+Найти резольвенту для интегрального уравнения Вольтерры со следующим ядром 
+$$ K(x,t)= \displaystyle (x-t)e^{(x^5-t^5)}, \lambda=1$$ 
+
+\noindent 
+{\bf Решение.~}\\ 
+\noindent 
+$$ 
+\begin{array}{lrc} 
+K_1(x,t)=\displaystyle ,(x-t)e^{(x^5-t^5)} \\[12pt] 
+K_2(x,t)=\displaystyle\int\limits_t^x (x-s)e^{(x^5-s^5)} \cdot (s-t)e^{(s^5-t^5)}ds = \displaystyle \frac{(x-t)^{3}e^{(x^5-t^5)}}{6} \\[12pt] 
+K_3(x,t)=\displaystyle\int\limits_t^x K(x,s)K_2(s,t)ds = \displaystyle \int\limits_t^x (x-s)e^{(x^5-s^5)} \cdot \frac{(s-t)^{3}e^{(s^5-t^5)}}{6}ds= \displaystyle \frac{(x-t)^{5}e^{(x^5-t^5)}}{120} \\[12pt]
+K_j(x,t)=\displaystyle= \frac{(x-t)^{2j-1}e^{(x^5-t^5)}}{(2j-1)!}\\[12pt]
+\end{array} 
+$$ 
+Подставляя это выражение для итерированных ядер, найдем резольвенту, учитывая заданную лямбду 
+$$ 
+R(x,t,\lambda)=e^{(x^5+t^5)}\sum_{p=1}^\infty\frac{(x-t)^{2j-1}}{(2j-1)!}, j = 1, 2, 3, ...  
+$$ 
+\newpage 
+\addcontentsline{toc}{section}{Список литературы} 
+\begin{thebibliography}{99} 
+\bibitem{book01} Львовский С.М. Набор и вёрстка в системе \LaTeX,\,2003. 
+\bibitem{book02} Краснов М.Л., Киселев А.И., Макаренко Г.И. Интегральные уравнения. М.:~Наука,\,1976. 
+\bibitem{book03} Васильева А. Б., Тихонов Н. А. Интегральные уравнения. —- 2-е изд., стереотип. —- М:~ФИЗМАТЛИТ,\,2002. 
+\end{thebibliography} 
+
+\end{document}
